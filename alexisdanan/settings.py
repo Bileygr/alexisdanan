@@ -20,10 +20,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1w=z7d6vc=f=bpduyrituab*iu-2k214uvmwv3)$ukk_fy=!%m'
+with open('alexisdanan/config/secret_key') as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+with open('alexisdanan/config/debug_status.txt') as j:
+    DEBUG = j.read().strip()
+
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'alexisdanan',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +80,10 @@ WSGI_APPLICATION = 'alexisdanan.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': 'alexisdanan/config/database.cnf',
+        },
     }
 }
 
