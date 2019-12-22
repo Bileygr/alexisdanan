@@ -7,7 +7,7 @@ services:
     django:
       build: ./docker
       container_name: ${PROJECT_NAME}-django
-      command: python3 manage.py runserver 0.0.0.0:8000
+      command: python manage.py runserver 0.0.0.0:8000
       volumes:
         - .:/application
       ports:

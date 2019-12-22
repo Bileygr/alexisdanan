@@ -24,8 +24,8 @@ with open('alexisdanan/config/secret_key') as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-with open('alexisdanan/config/debug_status.txt') as j:
-    DEBUG = j.read().strip()
+with open('alexisdanan/config/debug_status') as g:
+    DEBUG = g.read().strip()
 
 
 ALLOWED_HOSTS = []
@@ -82,7 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': 'alexisdanan/config/database.cnf',
+            'read_default_file': 'alexisdanan/config/db.cnf',
         },
     }
 }
