@@ -6,6 +6,7 @@ volumes:
 services:
     django:
       build: ./docker
+      restart: always
       container_name: ${PROJECT_NAME}-django
       command: python manage.py runserver 0.0.0.0:8000
       volumes:
@@ -13,7 +14,7 @@ services:
       ports:
         - "8000:8000"
       depends_on:
-        - mysql
+        - "mysql"
     
     adminer:
       image: adminer

@@ -28,7 +28,7 @@ with open('alexisdanan/config/debug_status') as g:
     DEBUG = g.read().strip()
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'alexisdanan.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['akexisdanan/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
