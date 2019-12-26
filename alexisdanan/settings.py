@@ -11,6 +11,13 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ
+
+env = environ.Env(
+    SECRET_KEY=(str, ''),
+    ALLOWED_HOSTS=(list, ['127.0.0.1']),
+)
+environ.Env.read_env('.env')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,15 +27,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open('alexisdanan/config/secret_key') as f:
-    SECRET_KEY = f.read().strip()
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 with open('alexisdanan/config/debug_status') as g:
     DEBUG = g.read().strip()
 
-
-ALLOWED_HOSTS = ['*']
+with open('alexisdanan/config/allowed_hosts') as h:
+    ALLOWED_HOSTS = [h.read().strip()]
 
 
 # Application definition
