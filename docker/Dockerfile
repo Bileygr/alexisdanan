@@ -9,6 +9,5 @@ WORKDIR "/application"
 RUN apt-get update \
     && apt-get -y install libmysqlclient-dev \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
-RUN pip install django-environ
 ADD requirements.txt /application/
 RUN pip install -r requirements.txt
