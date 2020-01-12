@@ -10,7 +10,7 @@ class Nouvelle(models.Model):
     titre = models.CharField(max_length=200, null=True)
     contenu = models.TextField()
     image = models.FileField(upload_to='uploads/')
-    date_de_publication = dateajout = models.DateTimeField(auto_now=True)
+    date_de_publication = models.DateTimeField(auto_now=True)
 
 class Message():
     nom = models.CharField(max_length=50, null=False)
