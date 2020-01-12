@@ -1,36 +1,373 @@
 {% load static %}
 
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <title>Charity</title>
+    <link rel="icon" href="{% static "img/logo2.png" %}">
     <!-- Bootstrap CSS -->
-    <!--<link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">-->
-    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
-
-    <title>Fédération des Comités Alexis Danan</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="css/flaticon.css">
+    <!-- magnific popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- nice select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
-    <div class="container">
-      <div id="main-logo"><img src="{% static "images/logo#1.gif" %}"></div>
-      <div id="secondary-logo" ><img src="{% static "images/logo#2.png" %}"></div>
-      <div id="navbar">Navbar</div>
-      <div id="gif"><img src="{% static "images/animationRafaelHouee.gif" %}"></div>
-      <div>Sidebar #1</div>
-      <div>Content</div>
-      <div>Sidebar #2</div>
-      <div id="footer">Footer</div>     
-    </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!--
-    <script src="{% static "js/jquery-3.4.1.slim.min.js" %}"></script>
-    <script src="{% static "js/popper.min.js" %}"></script>
-    <script src="{% static "js/bootstrap.min.js" %}"></script>
-    -->
-  </body>
+  <body>
+    <!--::header part start::-->
+    <header class="main_menu home_menu">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg navbar-light">
+              <a class="navbar-brand" href="index.html"> <img src="img/logo1.gif" alt="logo"> </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="ti-menu"></span>
+              </button>
+
+              <div class="collapse navbar-collapse main-menu-item justify-content-end"
+                id="navbarSupportedContent">
+                <ul class="navbar-nav align-items-center">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">Accueil</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="droits.html">Droits</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="actions_objectifs.html">Actions/objectifs</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown"
+                      role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Fédération
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="la_federation.html">La Fédération<a>
+                      <a class="dropdown-item" href="historique.html">Historique</a>
+                      <a class="dropdown-item" href="comites_en_france.html">Comités en France</a>
+                      <a class="dropdown-item" href="#partenaires">Partenaires</a>
+                      <a class="dropdown-item" href="comites_en_france.html">Liens utile</a>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#nouvelles">Nouvelles</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header part end-->
+
+    <!-- banner part start-->
+    <section class="banner_part">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 offset-lg-5">
+            <div class="banner_text">
+              <div class="banner_text_iner">
+                <h1>Bienvenue au comité de Paris</h1>
+                <p>"L'enfant qui souffre n'a pas le temps d'attendre" <b>Alexis Danan</b></p>
+                <a href="#" class="btn_2">Faire un don</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- banner part start-->
+
+    <!-- feature_part start-->
+    <section class="feature_part">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-8">
+            <div class="section_tittle text-center">
+              <h2>Comment aider un enfant en danger?</h2>
+            </div>
+          </div>
+        </div> 
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-sm-6">
+            <div class="single_feature">
+              <div class="single_feature_part">
+                <div class=" d-flex align-items-center">
+                  <img src="img/icon/warning.svg" alt="">
+                  <h4>Signalement</h4>
+                </div>
+                <p>
+                  <br>Dans le but de signaler le cas d'un enfant en danger, contactez le comité le plus proche de chez vous <a href="listeComites.htm">(liste des comités)</a>.
+                </p>
+                <p>Contactez la <a href="federation.htm" class=lien> Fédération des comités Alexis Danan </a><br><strong>Tél: 07 81 63 94 38</strong></p><br>
+                <h3>Autres Numéros d'appel</h3>
+                <p>
+                  Il existe aussi un Service National d'Accueil Téléphonique pour l'Enfance Maltraitée: <br> 
+                  <a href="http://www.allo119.gouv.fr/" class=lien>Appellez le 119 (24h/24) </a>
+                </p>
+                <p>En cas d'extrême urgence, la Police ou la Gendarmerie (suivant le secteur)... &nbsp;<br><strong>Tél: 17</strong><br></p>
+                <p>Numéro d'urgence européen, à réserver vraiment à des situations extérieures! (depuis un fixe ou un portable)...&nbsp; <br><strong>Tél: 112</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <!-- feature_part start-->
+
+    <!-- top_service part start-->
+    <section class="be_part">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6">
+                    <div class="be_part_text">
+                      <h2>Message</h2>
+                        <p>Notre association a travaillé et aurait souhaité disparaître dans une République qui aurait garanti bien-traitance à chacunde ses citoyens « enfants » à travers la volonté de chacun de ses citoyens "adultes".</p>
+                        <p>Liberté de dire, de vivre heureux, de grandir.</p>
+                        <p>Egalité de parole avec celle de l’adulte qui peut mentir et se protéger…</p>
+                        <p>Fraternité reconnue à travers le respect, la confiance, le partage pour les avoir rencontrés…</p>
+                        <p>Protection, comme l’engagement formel de chaque adulte en qui l’enfant commence par croire…</p>
+                        <p>Il y a urgence au contraire dans notre société en pleine évolution afin que l’enfant ne soit pas oublié en  ant que PERSONNE.</p>
+                        <p>Merci  à  tous  ceux  qui  nous  aident  et  nous  aideront  en  affirmant  une  telle  République !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- top_service part end-->
+
+    <!--::blog_part start::-->
+    <section class="blog_part padding_bottom" id="nouvelles">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8">
+                    <div class="section_tittle text-center">
+                      <br>
+                      <h2>Nouvelles</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="single_blog">
+                        <div class="appartment_img">
+                            <img src="img/cocktail_vision.gif" alt="">
+                        </div>
+                        <div class="single_appartment_content">
+                            <a href="blog.html">
+                                <h4>First cattle which earth unto let health for
+                                    can get and see what you
+                                </h4>
+                            </a>
+                            <ul class="list-unstyled">
+                                <li><a href=""> <span class="flaticon-calendar"></span> </a> May 10, 2019</li>
+                                <li><a href=""> <span class="flaticon-comment"></span> </a> 1 comments</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right_single_blog">
+                        <div class="single_blog">
+                            <div class="media">
+                                <div class="media-body align-self-center">
+                                    <p><a href="#">healthy food</a></p>
+                                    <a href="blog.html">
+                                        <h5 class="mt-0"> Man does day divided morning after give .</h5>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href=""> <span class="flaticon-calendar"></span> </a> May 10, 2019</li>
+                                        <li><a href=""> <span class="flaticon-comment"></span> </a> 1 comments</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_blog">
+                            <div class="media">
+                                <div class="media-body align-self-center">
+                                    <p><a href="#">healthy food</a></p>
+                                    <a href="blog.html">
+                                        <h5 class="mt-0"> To greater divide day hath fly moved was </h5>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href=""> <span class="flaticon-calendar"></span> </a> May 10, 2019</li>
+                                        <li><a href=""> <span class="flaticon-comment"></span> </a> 1 comments</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_blog">
+                            <div class="media">
+                                <div class="media-body align-self-center">
+                                    <p><a href="#">healthy food</a></p>
+                                    <a href="blog.html">
+                                        <h5 class="mt-0"> That likeness isn't air earth seas had cattle </h5>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href=""> <span class="flaticon-calendar"></span> </a> May 10, 2019</li>
+                                        <li><a href=""> <span class="flaticon-comment"></span> </a> 1 comments</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--::blog_part end::-->
+
+    <!--::our client part start::-->
+    <section id="partenaires" class="client_part padding_bottom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8">
+                    <div class="section_tittle text-center">
+                        <h2>Partenaires</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="client_logo owl-carousel">
+                        <div class="single_client_logo">
+                            <img src="img/client_logo/Logo_1.png" alt="">
+                        </div>
+                        <div class="single_client_logo">
+                            <img src="img/client_logo/Logo_2.png" alt="">
+                        </div>
+                        <div class="single_client_logo">
+                            <img src="img/client_logo/Logo_3.png" alt="">
+                        </div>
+                        <div class="single_client_logo">
+                            <img src="img/client_logo/Logo_4.png" alt="">
+                        </div>
+                        <div class="single_client_logo">
+                            <img src="img/client_logo/Logo_5.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--::our client part end::-->
+
+    <!-- footer part start-->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-sm-6 col-md-4 col-xl-3">
+                    <div class="single-footer-widget footer_1">
+                        <a href="index.html"> <img src="img/logo2.png" alt=""> </a>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-xl-4">
+                    <div class="single-footer-widget footer_2">
+                        <h4>Newsletter</h4>
+                        <p>Restez à jour</p>
+                        <div class="form-wrap" id="mc_embed_signup">
+                            <form target="_blank"
+                                action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                method="get" class="form-inline">
+                                <input class="form-control" name="EMAIL" placeholder="Entrez votre email"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrz votre email'"
+                                    required="" type="email">
+                                <button class="btn btn-default text-uppercase"><i class="ti-angle-right"></i></button>
+                                <div style="position: absolute; left: -5000px;">
+                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value=""
+                                        type="text">
+                                </div>
+
+                                <div class="info"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-md-4">
+                    <div class="single-footer-widget footer_2">
+                        <h4>Contactez nous</h4>
+                        <p>222, rue La Fayette 75010 Paris</p>
+                        <div class="contact_info">
+                            <p><span class="ti-mobile"></span>07 81 63 94 38</p>
+                            <p><span class="ti-mobile"></span>01 42 05 04 90 (fixe)</p>
+                            <p><span class="ti-write"></span>09 70 61 13 03 (fax)</p>
+                            <p><span class="ti-email"></span>federation@pourlaprotectiondelenfance.com</p>
+                            <p><span class="ti-world"></span><a href="http://pourlaprotectiondelenfance.com" style="color: inherit;text-decoration: none;">pourlaprotectiondelenfance.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright_part_text text-center">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright Fédération des Comités Alexis Danan &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer part end-->
+
+    <!-- jquery plugins here-->
+
+    <script src="js/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="js/swiper.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.smooth-scroll.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/masonry.pkgd.js"></script>
+    <!-- particles js -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <!-- contact js -->
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/mail-script.js"></script>
+    <script src="js/contact.js"></script>
+    <!-- custom js -->
+    <script src="js/custom.js"></script>
+</body>
 </html>
