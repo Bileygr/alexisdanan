@@ -25,3 +25,6 @@ def contact(request):
 
 def liensutile(request):
     return render(request, 'index.html')
+
+def comitesenfrance(request):
+    return render(request, 'comites_en_france.html')
