@@ -22,4 +22,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.intro, name='intro'),
     path('accueil', views.accueil, name='accueil'),
+    path('droits', views.droits, name='droits'),
+    path('actions-et-objectifs', views.actionsetobjectifs, name='actions et objectifs'),
+    path('federation', views.lafederation, name='la fédération'),
+    path('historique', views.historique, name='historique'),
+    path('liens-utile', views.liensutile, name='liens utile'),
+    path('contact', views.contact, name='contact'),
+
 ]

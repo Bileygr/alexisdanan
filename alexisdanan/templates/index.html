@@ -47,32 +47,32 @@
                 id="navbarSupportedContent">
                 <ul class="navbar-nav align-items-center">
                   <li class="nav-item">
-                    <a class="nav-link" href="index.html">Accueil</a>
+                    <a class="nav-link" href="{% url 'accueil' %}">Accueil</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="droits.html">Droits</a>
+                    <a class="nav-link" href="{% url 'droits' %}">Droits</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="actions_objectifs.html">Actions/objectifs</a>
+                    <a class="nav-link" href="{% url 'actions et objectifs' %}">Actions/objectifs</a>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown"
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown"
                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Fédération
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="la_federation.html">La Fédération<a>
-                      <a class="dropdown-item" href="historique.html">Historique</a>
-                      <a class="dropdown-item" href="comites_en_france.html">Comités en France</a>
+                      <a class="dropdown-item" href="{% url 'la fédératoion' %}">La Fédération<a>
+                      <a class="dropdown-item" href="{% url 'historique' %}">Historique</a>
+                      <a class="dropdown-item" href="{% url 'comités en France' %}">Comités en France</a>
                       <a class="dropdown-item" href="#partenaires">Partenaires</a>
-                      <a class="dropdown-item" href="comites_en_france.html">Liens utile</a>
+                      <a class="dropdown-item" href="{% url 'liens utile' %}">Liens utile</a>
                     </div>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#nouvelles">Nouvelles</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                   </li>
                 </ul>
               </div>
@@ -82,7 +82,7 @@
       </div>
     </header>
     <!-- Header part end-->
-
+{% block content %}
     <!-- banner part start-->
     <section class="banner_part">
       <div class="container">
@@ -274,7 +274,7 @@
         </div>
     </section>
     <!--::our client part end::-->
-
+{% endblock %}
     <!-- footer part start-->
     <footer class="footer-area">
         <div class="container">
