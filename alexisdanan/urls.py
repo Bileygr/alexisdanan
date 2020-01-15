@@ -29,5 +29,6 @@ urlpatterns = [
     path('historique', views.historique, name='historique'),
     path('liens-utile', views.liensutile, name='liens utile'),
     path('contact', views.contact, name='contact'),
+    path('connexion', views.connexion, name='connexion'),
 
 ]
