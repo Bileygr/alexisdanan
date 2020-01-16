@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -8,25 +6,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Pour la protection de l'enfance</title>
-    <link rel="icon" href="{% static "img/logo2.png" %}">
+    <link rel="icon" href="assets/site/img/logo2.png">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="assets/site/css/bootstrap.min.css">
     <!-- animate CSS -->
-    <link rel="stylesheet" href="{% static "css/animate.css" %}">
+    <link rel="stylesheet" href="assets/site/css/animate.css">
     <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="{% static "css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="assets/site/css/owl.carousel.min.css">
     <!-- themify CSS -->
-    <link rel="stylesheet" href="{% static "css/themify-icons.css" %}">
+    <link rel="stylesheet" href="assets/site/css/themify-icons.css">
     <!-- flaticon CSS -->
-    <link rel="stylesheet" href="{% static "css/flaticon.css" %}">
+    <link rel="stylesheet" href="assets/site/css/flaticon.css">
     <!-- magnific popup CSS -->
-    <link rel="stylesheet" href="{% static "css/magnific-popup.css" %}">
+    <link rel="stylesheet" href="assets/site/css/magnific-popup.css">
     <!-- nice select CSS -->
-    <link rel="stylesheet" href="{% static "css/nice-select.css" %}">
+    <link rel="stylesheet" href="assets/site/css/nice-select.css">
     <!-- swiper CSS -->
-    <link rel="stylesheet" href="{% static "css/slick.css" %}">
+    <link rel="stylesheet" href="assets/site/css/slick.css">
     <!-- style CSS -->
-    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="assets/site/css/style.css">
   </head>
 
   <body>
@@ -36,7 +34,7 @@
         <div class="row align-items-center">
           <div class="col-lg-12">
             <nav class="navbar navbar-expand-lg navbar-light">
-              <a class="navbar-brand" href="{% url 'accueil' %}"> <img src="{% static "img/logo1.gif" %}" alt="logo"> </a>
+              <a class="navbar-brand" href="{% url 'accueil' %}"> <img src="assets/site/img/logo1.gif" alt="logo"> </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -82,7 +80,7 @@
       </div>
     </header>
     <!-- Header part end-->
-{% block content %}
+
     <!-- banner part start-->
     <section class="banner_part">
       <div class="container">
@@ -174,7 +172,7 @@
                 <div class="col-lg-6">
                     <div class="single_blog">
                         <div class="appartment_img">
-                            <img src="{% static "img/cocktail_vision.gif" %}" alt="">
+                            <img src="assets/site/img/cocktail_vision.gif" alt="">
                         </div>
                         <div class="single_appartment_content">
                             <a href="blog.html">
@@ -258,102 +256,6 @@
         </div>
     </section>
     <!--::our client part end::-->
-{% endblock %}
-    <!-- footer part start-->
-    <footer class="footer-area">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-sm-6 col-md-4 col-xl-3">
-                    <div class="single-footer-widget footer_1">
-                        <a href="index.html"> <img src="{% static "img/logo2.png" %}" alt=""> </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-4">
-                    <div class="single-footer-widget footer_2">
-                        <h4>Newsletter</h4>
-                        <p>Restez à jour</p>
-                        <div class="form-wrap" id="mc_embed_signup">
-                            <form target="_blank"
-                                action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                method="get" class="form-inline">
-                                <input class="form-control" name="EMAIL" placeholder="Entrez votre email"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrz votre email'"
-                                    required="" type="email">
-                                <button class="btn btn-default text-uppercase"><i class="ti-angle-right"></i></button>
-                                <div style="position: absolute; left: -5000px;">
-                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value=""
-                                        type="text">
-                                </div>
-
-                                <div class="info"></div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-md-4">
-                    <div class="single-footer-widget footer_2">
-                        <h4>Contactez nous</h4>
-                        <p>222, rue La Fayette 75010 Paris</p>
-                        <div class="contact_info">
-                            <p><span class="ti-mobile"></span>07 81 63 94 38</p>
-                            <p><span class="ti-mobile"></span>01 42 05 04 90 (fixe)</p>
-                            <p><span class="ti-write"></span>09 70 61 13 03 (fax)</p>
-                            <p><span class="ti-email"></span>federation@pourlaprotectiondelenfance.com</p>
-                            <p><span class="ti-world"></span><a href="http://pourlaprotectiondelenfance.com" style="color: inherit;text-decoration: none;">pourlaprotectiondelenfance.com</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="copyright_part_text text-center">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright Fédération des Comités Alexis Danan &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> 
-| Images from <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@thepootphotographer?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from 🇸🇮 Janko Ferlič - @specialdaddy"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">🇸🇮 Janko Ferlič - @specialdaddy</span></a>
-<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@jonathanborba?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Jonathan Borba"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Jonathan Borba</span></a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- footer part end-->
-
-    <!-- jquery plugins here-->
-
-    <script src="{% static "js/jquery-1.12.1.min.js" %}"></script>
-    <!-- popper js -->
-    <script src="{% static "js/popper.min.js" %}"></script>
-    <!-- bootstrap js -->
-    <script src="{% static "js/bootstrap.min.js" %}"></script>
-    <!-- easing js -->
-    <script src="{% static "js/jquery.magnific-popup.js" %}"></script>
-    <!-- swiper js -->
-    <script src="{% static "js/swiper.min.js" %}"></script>
-    <script src="{% static "js/wow.min.js" %}"></script>
-    <script src="{% static "js/jquery.smooth-scroll.min.js" %}"></script>
-    <!-- swiper js -->
-    <script src="{% static "js/masonry.pkgd.js" %}"></script>
-    <!-- particles js -->
-    <script src="{% static "js/owl.carousel.min.js" %}"></script>
-    <script src="{% static "js/jquery.nice-select.min.js" %}"></script>
-    <!-- swiper js -->
-    <script src="{% static "js/slick.min.js" %}"></script>
-    <script src="{% static "js/jquery.counterup.min.js" %}"></script>
-    <script src="{% static "js/waypoints.min.js" %}"></script>
-    <!-- contact js -->
-    <script src="{% static "js/jquery.ajaxchimp.min.js" %}"></script>
-    <script src="{% static "js/jquery.form.js" %}"></script>
-    <script src="{% static "js/jquery.validate.min.js" %}"></script>
-    <script src="{% static "js/mail-script.js" %}"></script>
-    <script src="{% static "js/contact.js" %}"></script>
-    <!-- custom js -->
-    <script src="{% static "js/custom.js" %}"></script>
-</body>
-</html>
+<?php
+include("footer.php");
+?>
