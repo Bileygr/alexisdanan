@@ -31,7 +31,7 @@ if(isset($_POST["supprimer"])){
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="active">
-            <a class="" href="accueil.php">
+            <a class="" href="index.php">
                           <i class="icon_documents_alt"></i>
                           <span>Nouvelles</span>
                       </a>
@@ -45,7 +45,7 @@ if(isset($_POST["supprimer"])){
           <li>
             <a class="" href="informations.php">
                           <i class="icon_documents_alt"></i>
-                          <span>Informations du site</span>
+                          <span>Informations</span>
                       </a>
           </li>
           <li>

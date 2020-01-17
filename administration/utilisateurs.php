@@ -41,6 +41,12 @@ if(isset($_POST["supprimer"])){
           <li>
             <a class="" href="informations.php">
                           <i class="icon_documents_alt"></i>
+                          <span>Informations</span>
+                      </a>
+          </li>
+          <li>
+            <a class="" href="informations.php">
+                          <i class="icon_documents_alt"></i>
                           <span>Vos informations</span>
                       </a>
           </li>

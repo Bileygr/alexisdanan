@@ -23,7 +23,7 @@ if(isset($_POST["modifier"])){
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li>
-            <a class="" href="accueil.php">
+            <a class="" href="index.php">
                           <i class="icon_documents_alt"></i>
                           <span>Nouvelles</span>
                       </a>
