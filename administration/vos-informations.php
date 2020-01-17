@@ -4,24 +4,32 @@ require_once("../config/connect.php");
 
 $connect = new Connect();
 $connexion = $connect->connection();
-$requete = $connexion->prepare("SELECT nouvelle.*, utilisateur.nom, utilisateur.prenom FROM nouvelle JOIN utilisateur ON nouvelle.auteur=utilisateur.id");
-$requete->execute();
-$nouvelles = $requete->fetchAll();
-
-if(isset($_POST["afficher"])){
-  header("Location: ../nouvelle.php?id=".$_POST["id"]."");
-}
+$requete = $connexion->prepare("SELECT * FROM utilisateur WHERE id=?");
+$requete->execute([$_SESSION["utilisateur"]["id"]]);
+$utilisateur = $requete->fetch();
 
 if(isset($_POST["modifier"])){
-  header("Location: modifier-une-nouvelle.php?id=".$_POST["id"]."");
-}
+  if(!empty($_POST["nom"]) && !empty($_POST["prenom"]) && !empty($_POST["email"]) && !empty($_POST["telephone"]) ){
+    if(filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+      if(!empty($_POST["password"]) && !empty($_POST["password2"])){
+        if($_POST["password"] == $_POST["password2"]){
+          $encryptedpassword = password_hash($_POST["password"], PASSWORD_BCRYPT);
 
-if(isset($_POST["supprimer"])){
-  $connect = new Connect();
-  $connexion = $connect->connection();
-  $requete = $connexion->prepare("DELETE FROM nouvelle WHERE id=?");
-  $requete->execute([$_POST["id"]]);
-  header("Location: index.php");
+          $connect = new Connect();
+          $connexion = $connect->connection();
+          $requete = $connexion->prepare("UPDATE utilisateur SET nom=?, prenom=?, motdepasse=?, email=?, telephone=? WHERE id=?");
+          $requete->execute([$_POST["nom"], $_POST["prenom"], $encryptedpassword, $_POST["email"], $_POST["telephone"], $_SESSION["utilisateur"]['id']]);
+          header("Location: vos-informations.php");
+        }
+      }else{
+        $connect = new Connect();
+        $connexion = $connect->connection();
+        $requete = $connexion->prepare("UPDATE utilisateur SET nom=?, prenom=?, motdepasse=?, email=?, telephone=? WHERE id=?");
+        $requete->execute([$_POST["nom"], $_POST["prenom"], $utilisateur["motdepasse"], $_POST["email"], $_POST["telephone"], $_SESSION["utilisateur"]['id']]);
+        header("Location: vos-informations.php");
+      }
+    }
+  }           
 }
 ?>
 
@@ -30,7 +38,7 @@ if(isset($_POST["supprimer"])){
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
-          <li class="active">
+          <li>
             <a class="" href="accueil.php">
                           <i class="icon_documents_alt"></i>
                           <span>Nouvelles</span>
@@ -42,14 +50,14 @@ if(isset($_POST["supprimer"])){
                           <span>Utilisateurs</span>
                       </a>
           </li>
-          <li>
+          <li class="active">
             <a class="" href="informations.php">
                           <i class="icon_documents_alt"></i>
-                          <span>Informations du site</span>
+                          <span>Informations</span>
                       </a>
           </li>
-          <li>
-            <a class="" href="vos-informations.php">
+          <li class="active">
+            <a class="" href="informations.php">
                           <i class="icon_documents_alt"></i>
                           <span>Vos informations</span>
                       </a>
@@ -65,48 +73,63 @@ if(isset($_POST["supprimer"])){
     <section id="main-content">
       <section class="wrapper">
       <div class="row">
+        <div class="col-lg-12">
+          <section class="panel">
+            <header class="panel-heading">
+              Vos informations
+            </header>
+          </section>
+        </div>
+      </div>
+      <div class="row">
           <div class="col-lg-12">
             <section class="panel">
               <header class="panel-heading">
-                Nouvelles / 
-                <a href="poster-une-nouvelle.php">Poster</a>
+                Informattions
               </header>
-              <table class="table table-striped table-advance table-hover">
-                <tbody>
-                  <tr>
-                    <th><i class=""></i> Titre</th>
-                    <th><i class="icon_profile"></i> Auteur</th>
-                    <th><i class="icon_calendar"></i> Date de publication</th>
-                  </tr>
-                  <?php
-                    foreach($nouvelles as $nouvelle){
-                      echo 
-                      "
-                        <form method='POST'>
-                          <input type=\"text\" name=\"id\" value=".$nouvelle["id"]." hidden=\"hidden\">
-                          <tr>
-                            <td>".$nouvelle["titre"]."</td>
-                            <td>".$nouvelle["prenom"]." ".$nouvelle["nom"]."</td>
-                            <td>".$nouvelle["datedepublication"]."</td>
-                            <td>
-                              <div class=\"btn-group\">
-                                <button type=\"submit\" class=\"btn btn-primary\" name=\"afficher\">Afficher</button>
-                                <button type=\"submit\" class=\"btn btn-success\" name=\"modifier\">Modifier</button>
-                                <button type=\"submit\" class=\"btn btn-danger\" name=\"supprimer\">Supprimer</button>
-                              </div>
-                            </td>
-                          </tr>
-                        <form>
-                      ";
-                    }
-                  ?>
-                </tbody>
-              </table>
+              <div class="panel-body">
+                <form class="form-horizontal " method="POST">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Nom</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="nom" value="<?php echo $utilisateur["nom"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Prénom</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="prenom" value="<?php echo $utilisateur["prenom"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Mot de passe</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" name="password" placeholder="Mot de passe">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Confirmation du mot de passe</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" name="password2" placeholder="Confirmation du mot de passe">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="email" value="<?php echo $utilisateur["email"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Téléphone</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="telephone" value="<?php echo $utilisateur["telephone"]; ?>">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary" name="modifier">Modifier</button>
+                </form>
+              </div>
             </section>
-          </div>
-        </div>
-
-      </section>
+    </section>
       <div class="text-right">
         <div class="credits">
           <!--

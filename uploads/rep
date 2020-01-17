@@ -1,0 +1,14 @@
+#!/bin/bash
+rep=$(pwd) # Recupere le chemin du repertoire dans lequel se trouve le script.
+if [ ! -L "$rep/tache" ] # Verifie si le lien tache n'existe pas.
+	then
+		ln -s rep tache # Comme le lien tache n'existe pas on le cree, le lien tache pointe vers lien rep qui pointe vers les données du script.
+fi # Fin de la condition.
+
+if [ $0 = "rep" ] # On compare la valeur de la variable positionnelle 0 a "rep".
+	then
+		cut -d: -f1,6 /etc/passwd # On extrait les informations qu'on veut afficher qui se trouve dans le fichier /etc/passwd [1]:[2]:[3]:[4]:[5]:[6]:[7].
+elif [ $0 = "tache" ] # Sinon on compare la valeur de la variable positionnelle 0 a "tache".
+	then
+		cut -d: -f1,7 /etc/passwd # On extrait les informations qu'on veut afficher qui se trouve dans le fichier /etc/passwd [1]:[2]:[3]:[4]:[5]:[6]:[7].
+fi# Fin de la condition.

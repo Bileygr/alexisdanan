@@ -4,22 +4,18 @@ require_once("../config/connect.php");
 
 $connect = new Connect();
 $connexion = $connect->connection();
-$requete = $connexion->prepare("SELECT nouvelle.*, utilisateur.nom, utilisateur.prenom FROM nouvelle JOIN utilisateur ON nouvelle.auteur=utilisateur.id");
+$requete = $connexion->prepare("SELECT * FROM utilisateur");
 $requete->execute();
-$nouvelles = $requete->fetchAll();
-
-if(isset($_POST["afficher"])){
-  header("Location: ../nouvelle.php?id=".$_POST["id"]."");
-}
+$utilisateurs = $requete->fetchAll();
 
 if(isset($_POST["modifier"])){
-  header("Location: modifier-une-nouvelle.php?id=".$_POST["id"]."");
+  header("Location: modifier-un-utilisateur.php?id=".$_POST["id"]."");
 }
 
 if(isset($_POST["supprimer"])){
   $connect = new Connect();
   $connexion = $connect->connection();
-  $requete = $connexion->prepare("DELETE FROM nouvelle WHERE id=?");
+  $requete = $connexion->prepare("DELETE FROM utilisateur WHERE id=?");
   $requete->execute([$_POST["id"]]);
   header("Location: index.php");
 }
@@ -30,13 +26,13 @@ if(isset($_POST["supprimer"])){
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
-          <li class="active">
-            <a class="" href="accueil.php">
+          <li>
+            <a class="" href="index.php">
                           <i class="icon_documents_alt"></i>
                           <span>Nouvelles</span>
                       </a>
           </li>
-          <li>
+          <li class="active">
             <a class="" href="utilisateurs.php">
                           <i class="icon_documents_alt"></i>
                           <span>Utilisateurs</span>
@@ -44,12 +40,6 @@ if(isset($_POST["supprimer"])){
           </li>
           <li>
             <a class="" href="informations.php">
-                          <i class="icon_documents_alt"></i>
-                          <span>Informations du site</span>
-                      </a>
-          </li>
-          <li>
-            <a class="" href="vos-informations.php">
                           <i class="icon_documents_alt"></i>
                           <span>Vos informations</span>
                       </a>
@@ -68,30 +58,33 @@ if(isset($_POST["supprimer"])){
           <div class="col-lg-12">
             <section class="panel">
               <header class="panel-heading">
-                Nouvelles / 
-                <a href="poster-une-nouvelle.php">Poster</a>
+                Utilisateurs / 
+                <a href="inscription.php">Créer</a>
               </header>
               <table class="table table-striped table-advance table-hover">
                 <tbody>
                   <tr>
-                    <th><i class=""></i> Titre</th>
-                    <th><i class="icon_profile"></i> Auteur</th>
-                    <th><i class="icon_calendar"></i> Date de publication</th>
+                    <th><i class=""></i> Nom</th>
+                    <th><i class=""></i>Prénom</th>
+                    <th><i class=""></i>Email</th>
+                    <th><i class=""></i>Téléphone</th>
+                    <th><i class=""></i>Date de création</th>
                   </tr>
                   <?php
-                    foreach($nouvelles as $nouvelle){
+                    foreach($utilisateurs as $utilisateur){
                       echo 
                       "
                         <form method='POST'>
-                          <input type=\"text\" name=\"id\" value=".$nouvelle["id"]." hidden=\"hidden\">
+                          <input type=\"text\" name=\"id\" value=".$utilisateur["id"]." hidden=\"hidden\">
                           <tr>
-                            <td>".$nouvelle["titre"]."</td>
-                            <td>".$nouvelle["prenom"]." ".$nouvelle["nom"]."</td>
-                            <td>".$nouvelle["datedepublication"]."</td>
+                            <td>".$utilisateur["nom"]."</td>
+                            <td>".$utilisateur["prenom"]."</td>
+                            <td>".$utilisateur["email"]."</td>
+                            <td>".$utilisateur["telephone"]."</td>
+                            <td>".$utilisateur["datedecreation"]."</td>
                             <td>
                               <div class=\"btn-group\">
-                                <button type=\"submit\" class=\"btn btn-primary\" name=\"afficher\">Afficher</button>
-                                <button type=\"submit\" class=\"btn btn-success\" name=\"modifier\">Modifier</button>
+                                <button type=\"submit\" class=\"btn btn-primary\" name=\"modifier\">Modifier</button>
                                 <button type=\"submit\" class=\"btn btn-danger\" name=\"supprimer\">Supprimer</button>
                               </div>
                             </td>

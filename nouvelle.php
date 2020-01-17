@@ -45,7 +45,7 @@
                      <ul class="blog-info-link mt-3 mb-4">
                         <li><i class="far fa-comments"></i> Posté par <?php echo $nouvelle["prenom"]." ".$nouvelle["nom"]; ?></li>
                      </ul>
-                     <p class="excert"><?php echo $nouvelle["contenu"];?></p>
+                     <?php echo $nouvelle["contenu"];?>
                   </div>
                </div>
             </div>

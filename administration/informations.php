@@ -4,24 +4,16 @@ require_once("../config/connect.php");
 
 $connect = new Connect();
 $connexion = $connect->connection();
-$requete = $connexion->prepare("SELECT nouvelle.*, utilisateur.nom, utilisateur.prenom FROM nouvelle JOIN utilisateur ON nouvelle.auteur=utilisateur.id");
+$requete = $connexion->prepare("SELECT * FROM contact WHERE id=1");
 $requete->execute();
-$nouvelles = $requete->fetchAll();
-
-if(isset($_POST["afficher"])){
-  header("Location: ../nouvelle.php?id=".$_POST["id"]."");
-}
+$information = $requete->fetch();
 
 if(isset($_POST["modifier"])){
-  header("Location: modifier-une-nouvelle.php?id=".$_POST["id"]."");
-}
-
-if(isset($_POST["supprimer"])){
   $connect = new Connect();
-  $connexion = $connect->connection();
-  $requete = $connexion->prepare("DELETE FROM nouvelle WHERE id=?");
-  $requete->execute([$_POST["id"]]);
-  header("Location: index.php");
+	$connexion = $connect->connection();
+	$requete = $connexion->prepare("UPDATE contact SET numeroderue=?, rue=?, codepostal=?, ville=?, telephonemobile=?, telephonefixe=?, fax=?, email=?, siteweb=? WHERE id=?");
+	$requete->execute([$_POST["numeroderue"], $_POST["rue"], $_POST["codepostal"], $_POST["ville"], $_POST["telephonemobile"], $_POST["telephonefixe"], $_POST["fax"], $_POST["email"], $_POST["siteweb"], 1]);
+  header("Location: informations.php");
 }
 ?>
 
@@ -30,7 +22,7 @@ if(isset($_POST["supprimer"])){
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
-          <li class="active">
+          <li>
             <a class="" href="accueil.php">
                           <i class="icon_documents_alt"></i>
                           <span>Nouvelles</span>
@@ -42,10 +34,10 @@ if(isset($_POST["supprimer"])){
                           <span>Utilisateurs</span>
                       </a>
           </li>
-          <li>
+          <li class="active">
             <a class="" href="informations.php">
                           <i class="icon_documents_alt"></i>
-                          <span>Informations du site</span>
+                          <span>Informations</span>
                       </a>
           </li>
           <li>
@@ -65,48 +57,81 @@ if(isset($_POST["supprimer"])){
     <section id="main-content">
       <section class="wrapper">
       <div class="row">
+        <div class="col-lg-12">
+          <section class="panel">
+            <header class="panel-heading">
+              Informations de contact de l'association
+            </header>
+          </section>
+        </div>
+      </div>
+      <div class="row">
           <div class="col-lg-12">
             <section class="panel">
               <header class="panel-heading">
-                Nouvelles / 
-                <a href="poster-une-nouvelle.php">Poster</a>
+                Informattions
               </header>
-              <table class="table table-striped table-advance table-hover">
-                <tbody>
-                  <tr>
-                    <th><i class=""></i> Titre</th>
-                    <th><i class="icon_profile"></i> Auteur</th>
-                    <th><i class="icon_calendar"></i> Date de publication</th>
-                  </tr>
-                  <?php
-                    foreach($nouvelles as $nouvelle){
-                      echo 
-                      "
-                        <form method='POST'>
-                          <input type=\"text\" name=\"id\" value=".$nouvelle["id"]." hidden=\"hidden\">
-                          <tr>
-                            <td>".$nouvelle["titre"]."</td>
-                            <td>".$nouvelle["prenom"]." ".$nouvelle["nom"]."</td>
-                            <td>".$nouvelle["datedepublication"]."</td>
-                            <td>
-                              <div class=\"btn-group\">
-                                <button type=\"submit\" class=\"btn btn-primary\" name=\"afficher\">Afficher</button>
-                                <button type=\"submit\" class=\"btn btn-success\" name=\"modifier\">Modifier</button>
-                                <button type=\"submit\" class=\"btn btn-danger\" name=\"supprimer\">Supprimer</button>
-                              </div>
-                            </td>
-                          </tr>
-                        <form>
-                      ";
-                    }
-                  ?>
-                </tbody>
-              </table>
+              <div class="panel-body">
+                <form class="form-horizontal " method="POST">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Numéro de rue</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="numeroderue" value="<?php echo $information["numeroderue"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Rue</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="rue" value="<?php echo $information["rue"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Code postal</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="codepostal" value="<?php echo $information["codepostal"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Ville</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="ville" value="<?php echo $information["ville"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Téléphone mobile</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="telephonemobile" value="<?php echo $information["telephonemobile"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Téléphone fixe</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="telephonefixe" value="<?php echo $information["telephonefixe"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Fax</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="fax" value="<?php echo $information["fax"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="email" value="<?php echo $information["email"]; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Site web</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="siteweb" value="<?php echo $information["siteweb"]; ?>">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary" name="modifier">Modifier</button>
+                </form>
+              </div>
             </section>
-          </div>
-        </div>
-
-      </section>
+    </section>
       <div class="text-right">
         <div class="credits">
           <!--

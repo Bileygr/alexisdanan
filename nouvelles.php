@@ -51,10 +51,7 @@
                                         <a class=\"d-inline-block\" href=\"nouvelle.php?id=".$nouvelle["id"]."\">
                                             <h2>Posté le ".$jour." / ".$mois." / ".$annee."</h2>
                                         </a>
-                                        <p style=\"width:60ch; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;\">
-                                            That dominion stars lights dominion divide years for fourth have don't stars is that
-                                            he earth it first without heaven in place seed it second morning saying.
-                                        </p>
+                                        ".$nouvelle["contenu"]."
                                     </div>
                                 </article>
                             ";
