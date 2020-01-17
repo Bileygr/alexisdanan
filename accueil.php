@@ -29,7 +29,11 @@
               <div class="banner_text_iner">
                 <h1>Bienvenue au comité de Paris</h1>
                 <p>"L'enfant qui souffre n'a pas le temps d'attendre" <b>Alexis Danan</b></p>
-                <a href="#" class="btn_2">Faire un don</a>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_s-xclick">
+                  <input type="hidden" name="hosted_button_id" value="FXDTAVPJZR6B4">
+                  <input type="submit" name="submit" value="Faire un don" class="btn_2">
+                </form>
               </div>
             </div>
           </div>
