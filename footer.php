@@ -1,3 +1,12 @@
+<?php
+require_once("config/connect.php");
+$connect = new Connect();
+$connexion = $connect->connection();
+$requete = $connexion->prepare("SELECT * FROM contact WHERE id=1");
+$requete->execute();
+$contact = $requete->fetch();
+?>
+    
     <!-- footer part start-->
     <footer class="footer-area">
         <div class="container">
@@ -7,38 +16,16 @@
                         <a href="index.html"> <img src="assets/site/img/logo2.png" alt=""> </a>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-4 col-xl-4">
-                    <div class="single-footer-widget footer_2">
-                        <h4>Newsletter</h4>
-                        <p>Restez à jour</p>
-                        <div class="form-wrap" id="mc_embed_signup">
-                            <form target="_blank"
-                                action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                method="get" class="form-inline">
-                                <input class="form-control" name="EMAIL" placeholder="Entrez votre email"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrz votre email'"
-                                    required="" type="email">
-                                <button class="btn btn-default text-uppercase"><i class="ti-angle-right"></i></button>
-                                <div style="position: absolute; left: -5000px;">
-                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value=""
-                                        type="text">
-                                </div>
-
-                                <div class="info"></div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-xl-3 col-sm-6 col-md-4">
-                    <div class="single-footer-widget footer_2">
+                    <div class="single-footer-widget footer_2" id="contact">
                         <h4>Contactez nous</h4>
-                        <p>222, rue La Fayette 75010 Paris</p>
+                        <p><?php echo $contact["numeroderue"].", ".$contact["rue"]." ".$contact["codepostal"]." ".$contact["ville"] ?></p>
                         <div class="contact_info">
-                            <p><span class="ti-mobile"></span>07 81 63 94 38</p>
-                            <p><span class="ti-mobile"></span>01 42 05 04 90 (fixe)</p>
-                            <p><span class="ti-write"></span>09 70 61 13 03 (fax)</p>
-                            <p><span class="ti-email"></span>federation@pourlaprotectiondelenfance.com</p>
-                            <p><span class="ti-world"></span><a href="http://pourlaprotectiondelenfance.com" style="color: inherit;text-decoration: none;">pourlaprotectiondelenfance.com</a></p>
+                            <p><span class="ti-mobile"></span><?php echo $contact["telephonemobile"] ?> (mobile)</p>
+                            <p><span class="ti-mobile"></span><?php echo $contact["telephonefixe"] ?> (fixe)</p>
+                            <p><span class="ti-write"></span><?php echo $contact["fax"] ?> (fax)</p>
+                            <p><span class="ti-email"></span><?php echo $contact["email"] ?></p>
+                            <p><span class="ti-world"></span><a href="http://<?php echo $contact["siteweb"] ?>" style="color: inherit;text-decoration: none;"><?php echo $contact["siteweb"] ?></a></p>
                         </div>
                     </div>
                 </div>

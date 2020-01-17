@@ -34,7 +34,7 @@
         <div class="row align-items-center">
           <div class="col-lg-12">
             <nav class="navbar navbar-expand-lg navbar-light">
-              <a class="navbar-brand" href="{% url 'accueil' %}"> <img src="assets/site/img/logo1.gif" alt="logo"> </a>
+              <a class="navbar-brand" href="accueil.php"> <img src="assets/site/img/logo1.gif" alt="logo"> </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -45,13 +45,13 @@
                 id="navbarSupportedContent">
                 <ul class="navbar-nav align-items-center">
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'accueil' %}">Accueil</a>
+                    <a class="nav-link" href="accueil.php">Accueil</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'droits' %}">Droits</a>
+                    <a class="nav-link" href="droits.php">Droits</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'actions et objectifs' %}">Actions/objectifs</a>
+                    <a class="nav-link" href="actions_et_objectifs.php">Actions/objectifs</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdown"
@@ -59,18 +59,18 @@
                       Fédération
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{% url 'la fédération' %}">La Fédération<a>
-                      <a class="dropdown-item" href="{% url 'historique' %}">Historique</a>
-                      <a class="dropdown-item" href="{% url 'comités en france' %}">Comités en France</a>
-                      <a class="dropdown-item" href="{% url 'accueil' %}#partenaires">Partenaires</a>
-                      <a class="dropdown-item" href="{% url 'liens utile' %}">Liens utile</a>
+                      <a class="dropdown-item" href="la_federation.php">La Fédération<a>
+                      <a class="dropdown-item" href="historique.php">Historique</a>
+                      <a class="dropdown-item" href="comites_en_france.php">Comités en France</a>
+                      <a class="dropdown-item" href="accueil.php#partenaires">Partenaires</a>
+                      <a class="dropdown-item" href="liens_utile.php">Liens utile</a>
                     </div>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#nouvelles">Nouvelles</a>
+                    <a class="nav-link" href="accueil.php#nouvelles">Nouvelles</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    <a class="nav-link" href="accueil.php#contact">Contact</a>
                   </li>
                 </ul>
               </div>

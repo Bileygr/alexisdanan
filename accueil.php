@@ -1,86 +1,25 @@
-<!DOCTYPE html>
+<?php
+  include("header.php");
+  require_once("config/connect.php");
 
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Pour la protection de l'enfance</title>
-    <link rel="icon" href="assets/site/img/logo2.png">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/site/css/bootstrap.min.css">
-    <!-- animate CSS -->
-    <link rel="stylesheet" href="assets/site/css/animate.css">
-    <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="assets/site/css/owl.carousel.min.css">
-    <!-- themify CSS -->
-    <link rel="stylesheet" href="assets/site/css/themify-icons.css">
-    <!-- flaticon CSS -->
-    <link rel="stylesheet" href="assets/site/css/flaticon.css">
-    <!-- magnific popup CSS -->
-    <link rel="stylesheet" href="assets/site/css/magnific-popup.css">
-    <!-- nice select CSS -->
-    <link rel="stylesheet" href="assets/site/css/nice-select.css">
-    <!-- swiper CSS -->
-    <link rel="stylesheet" href="assets/site/css/slick.css">
-    <!-- style CSS -->
-    <link rel="stylesheet" href="assets/site/css/style.css">
-  </head>
+  $connect = new Connect();
+  $connexion = $connect->connection();
+  $requete = $connexion->prepare("SELECT nouvelle.*, utilisateur.nom, utilisateur.prenom FROM nouvelle JOIN utilisateur ON nouvelle.auteur=utilisateur.id ORDER BY nouvelle.datedepublication DESC LIMIT 3");
+  $requete->execute();
+  $nouvelles = $requete->fetchAll();
 
-  <body>
-    <!--::header part start::-->
-    <header class="main_menu home_menu">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-12">
-            <nav class="navbar navbar-expand-lg navbar-light">
-              <a class="navbar-brand" href="{% url 'accueil' %}"> <img src="assets/site/img/logo1.gif" alt="logo"> </a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="ti-menu"></span>
-              </button>
+  $media="";
+  if(empty($nouvelles[0]["media"])){
+   $media="assets/site/img/logo1.gif";
+  }else{
+     $media=$nouvelles[0]["media"];
+  }
 
-              <div class="collapse navbar-collapse main-menu-item justify-content-end"
-                id="navbarSupportedContent">
-                <ul class="navbar-nav align-items-center">
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'accueil' %}">Accueil</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'droits' %}">Droits</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'actions et objectifs' %}">Actions/objectifs</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown"
-                      role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Fédération
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{% url 'la fédération' %}">La Fédération<a>
-                      <a class="dropdown-item" href="{% url 'historique' %}">Historique</a>
-                      <a class="dropdown-item" href="{% url 'comités en france' %}">Comités en France</a>
-                      <a class="dropdown-item" href="{% url 'accueil' %}#partenaires">Partenaires</a>
-                      <a class="dropdown-item" href="{% url 'liens utile' %}">Liens utile</a>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#nouvelles">Nouvelles</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-                  </li>
-                </ul>
-              </div>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
-    <!-- Header part end-->
-
+  $datepremier = date_parse($nouvelles[0]["datedepublication"]);
+  $jour1 = $datepremier["day"];
+  $mois1 = $datepremier["month"];
+  $annee1 = $datepremier["year"];
+?>
     <!-- banner part start-->
     <section class="banner_part">
       <div class="container">
@@ -100,11 +39,11 @@
     <!-- banner part start-->
 
     <!-- feature_part start-->
-    <section class="feature_part" id="signalement">
+    <section class="feature_part">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-8">
-            <div class="section_tittle text-center">
+            <div class="section_tittle text-center" id="signalement">
               <h2>Comment aider un enfant en danger?</h2>
             </div>
           </div>
@@ -114,7 +53,7 @@
             <div class="single_feature">
               <div class="single_feature_part">
                 <div class=" d-flex align-items-center">
-                  <img src="{% static "img/icon/warning.svg" %}" alt="">
+                  <img src="assets/site/img/icon/warning.svg" alt="">
                   <h4>Signalement</h4>
                 </div>
                 <p>
@@ -169,70 +108,65 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="single_blog">
-                        <div class="appartment_img">
-                            <img src="assets/site/img/cocktail_vision.gif" alt="">
+                <?php
+                  echo 
+                  "
+                    <div class=\"col-lg-6\">
+                      <div class=\"single_blog\">
+                        <div class=\"appartment_img\">
+                          <img src=\"".$media."\" alt=\"\">
                         </div>
-                        <div class="single_appartment_content">
-                            <a href="blog.html">
-                                <h4>First cattle which earth unto let health for
-                                    can get and see what you
-                                </h4>
+                        <div class=\"single_appartment_content\">
+                          <a href=\"nouvelle.php?id=".$nouvelles[0]["id"]."\">
+                            <h4>".$nouvelles[0]["titre"]."</h4>
+                          </a>
+                          <ul class=\"list-unstyled\">
+                            <li><span class=\"flaticon-calendar\"></span> ".$jour1." / ".$mois1." / ".$annee1."</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  ";
+                  unset($nouvelles[0]);
+                  echo 
+                  "<div class=\"col-lg-6\">
+                    <div class=\"right_single_blog\">";
+                    foreach($nouvelles as $nouvelle){
+                      $date = date_parse($nouvelle["datedepublication"]);
+                      $jour = $date["day"];
+                      $mois = $date["month"];
+                      $annee = $date["year"];
+                        echo 
+                        "
+                            <div class=\"single_blog\">
+                                <div class=\"media\">
+                                    <div class=\"media-body align-self-center\">
+                                        <a href=\"nouvelle.php?id=".$nouvelle["id"]."\">
+                                            <h5 class=\"mt-0\"> ".$nouvelle["titre"]."</h5>
+                                        </a>
+                                        <ul class=\"list-unstyled\">
+                                            <li><a href=\"\"> <span class=\"flaticon-calendar\"></span> </a> ".$jour." / ".$mois." / ".$annee."</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        ";
+                    }
+                    echo 
+                    "
+                    <div class=\"single_blog\">
+                    <div class=\"media\">
+                        <div class=\"media-body align-self-center\">
+                            <a href=\"nouvelles.php\">
+                                <h5 class=\"mt-0\" style=\"text-align: center\"> Toute les nouvelles</h5>
                             </a>
-                            <ul class="list-unstyled">
-                                <li><a href=""> <span class="flaticon-calendar"></span> </a> May 10, 2019</li>
-                                <li><a href=""> <span class="flaticon-comment"></span> </a> 1 comments</li>
-                            </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="right_single_blog">
-                        <div class="single_blog">
-                            <div class="media">
-                                <div class="media-body align-self-center">
-                                    <p><a href="#">healthy food</a></p>
-                                    <a href="blog.html">
-                                        <h5 class="mt-0"> Man does day divided morning after give .</h5>
-                                    </a>
-                                    <ul class="list-unstyled">
-                                        <li><a href=""> <span class="flaticon-calendar"></span> </a> May 10, 2019</li>
-                                        <li><a href=""> <span class="flaticon-comment"></span> </a> 1 comments</li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
-                        <div class="single_blog">
-                            <div class="media">
-                                <div class="media-body align-self-center">
-                                    <p><a href="#">healthy food</a></p>
-                                    <a href="blog.html">
-                                        <h5 class="mt-0"> To greater divide day hath fly moved was </h5>
-                                    </a>
-                                    <ul class="list-unstyled">
-                                        <li><a href=""> <span class="flaticon-calendar"></span> </a> May 10, 2019</li>
-                                        <li><a href=""> <span class="flaticon-comment"></span> </a> 1 comments</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_blog">
-                            <div class="media">
-                                <div class="media-body align-self-center">
-                                    <p><a href="#">healthy food</a></p>
-                                    <a href="blog.html">
-                                        <h5 class="mt-0"> That likeness isn't air earth seas had cattle </h5>
-                                    </a>
-                                    <ul class="list-unstyled">
-                                        <li><a href=""> <span class="flaticon-calendar"></span> </a> May 10, 2019</li>
-                                        <li><a href=""> <span class="flaticon-comment"></span> </a> 1 comments</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                      </div>
+                    "
+                ?>
             </div>
         </div>
     </section>
@@ -256,6 +190,7 @@
         </div>
     </section>
     <!--::our client part end::-->
+
 <?php
-include("footer.php");
+  include("footer.php");
 ?>
